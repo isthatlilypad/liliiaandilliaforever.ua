@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <meta name="description" content="Лілія & Ілля одружуються — 8 серпня 2026" />
+  <title>Лілія & Ілля — Назавжди</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cormorant+Upright:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1D3B58;
+      --navy-dark: #152c43;
+      --navy-light: #264d73;
+      --cream: #F5F0E8;
+      --cream-dark: #EDE7D9;
+      --white: #FFFFFF;
+      --gold: #C9A96E;
+      --text-light: rgba(255,255,255,0.88);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--cream);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: center; align-items: center;
+      padding: 18px 40px; gap: 40px;
+      background: rgba(29, 59, 88, 0.96);
+      backdrop-filter: blur(12px);
+      flex-wrap: nowrap;
+    }
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-family: 'EB Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--white); }
+    nav .nav-title {
+      font-family: 'Cormorant Upright', serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: var(--cream);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 120px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(29,59,88,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-script {
+      font-family: 'Cormorant Upright', serif;
+      font-size: clamp(64px, 13vw, 120px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      animation: fadeUp 1.2s ease both;
+    }
+    .hero-amp {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+    }
+    .hero-subtitle {
+      margin-top: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(18px, 3.5vw, 26px);
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      animation: fadeUp 1.2s 0.2s ease both;
+    }
+    .hero-date {
+      margin-top: 8px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(18px, 3.5vw, 26px);
+      color: var(--navy);
+      animation: fadeUp 1.2s 0.3s ease both;
+    }
+    .hero-divider {
+      width: 1px; height: 60px;
+      background: var(--navy);
+      margin: 32px auto;
+      opacity: 0.3;
+      animation: fadeUp 1.2s 0.4s ease both;
+    }
+    .hero-photo {
+      width: min(540px, 90vw);
+      aspect-ratio: 4/3;
+      background: var(--cream-dark);
+      border: 1px solid rgba(29,59,88,0.12);
+      margin: 0 auto 32px;
+      overflow: hidden;
+      animation: fadeUp 1.2s 0.5s ease both;
+      position: relative;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .hero-meta {
+      display: flex; gap: 60px; justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 1.2s 0.55s ease both;
+    }
+    .hero-meta-item { text-align: center; }
+    .hero-meta-item .label {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; opacity: 0.5;
+      display: block; margin-bottom: 4px;
+    }
+    .hero-meta-item .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+    }
+    .rsvp-cta {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 14px 44px;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      font-family: 'EB Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+      animation: fadeUp 1.2s 0.65s ease both;
+    }
+    .rsvp-cta:hover { background: var(--navy); color: var(--white); }
+
+    /* ─── SECTIONS SHARED ─── */
+    section { padding: 100px 24px; }
+    .section-inner { max-width: 720px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Cormorant Upright', serif;
+      font-size: clamp(52px, 9vw, 90px);
+      font-weight: 400;
+      text-align: center;
+      line-height: 1;
+      margin-bottom: 48px;
+      color: var(--white);
+    }
+    .section-title-cream { color: var(--navy); }
+
+    /* ─── STORY ─── */
+    #story { background: var(--navy); color: var(--white); }
+    .story-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(18px, 3vw, 22px);
+      line-height: 1.85;
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 52px;
+    }
+    .story-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 620px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .story-photo-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .story-photo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 3/4;
+    }
+    .story-photo-empty {
+      aspect-ratio: 3/4;
+      background: #2a3f54;
+    }
+
+    /* ─── CEREMONY ─── */
+    #ceremony {
+      background: var(--navy);
+      color: var(--white);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .ceremony-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+    .ceremony-text {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(17px, 2.8vw, 21px);
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 36px;
+    }
+    .ceremony-details {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 28px;
+    }
+    .ceremony-details .info-block .label {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; opacity: 0.5;
+      display: block; margin-bottom: 4px;
+    }
+    .ceremony-details .info-block .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+    }
+
+    /* ─── CELEBRATION ─── */
+    #celebration { background: var(--cream); }
+    .celebration-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .celebration-inner .section-title { color: var(--navy); }
+    .celebration-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(18px, 3vw, 22px);
+      line-height: 1.8;
+      color: var(--navy);
+      margin-bottom: 36px;
+    }
+    .celebration-details {
+      display: flex;
+      justify-content: center; gap: 60px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .celebration-details .info-block { text-align: center; }
+    .celebration-details .label {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; opacity: 0.4;
+      display: block; margin-bottom: 4px;
+    }
+    .celebration-details .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 21px;
+      color: var(--navy);
+    }
+    .map-link {
+      display: inline-block;
+      padding: 12px 36px;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      font-family: 'EB Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+    .map-link:hover { background: var(--navy); color: var(--white); }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--navy); color: var(--white); }
+    .faq-list { max-width: 600px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding: 28px 0;
+    }
+    .faq-q {
+      font-family: 'EB Garamond', serif;
+      font-size: 15px; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+    .faq-a {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(18px, 2.8vw, 22px);
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+
+    /* ─── COLOR PALETTE ─── */
+    #palette { background: var(--cream); text-align: center; }
+    #palette .section-title { color: var(--navy); }
+    .palette-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(17px, 2.5vw, 20px);
+      color: var(--navy);
+      opacity: 0.7;
+      margin-bottom: 52px;
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .palette-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .swatch-circle {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      flex-shrink: 0;
+    }
+    .swatch-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--navy);
+      opacity: 0.75;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    /* ─── MORE ─── */
+    #more {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--white);
+    }
+    .more-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 620px;
+      margin: 0 auto 48px;
+    }
+    .more-caption { text-align: center; }
+    .more-caption .section-title { margin-bottom: 8px; }
+    .more-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      opacity: 0.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 32px 24px;
+      font-family: 'EB Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+    }
+    footer span {
+      font-family: 'Cormorant Upright', serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ─── COUNTDOWN ─── */
+    .countdown {
+      display: flex; gap: 28px; justify-content: center;
+      flex-wrap: wrap;
+      margin: 36px 0 0;
+      animation: fadeUp 1.2s 0.7s ease both;
+    }
+    .countdown-unit { text-align: center; }
+    .countdown-num {
+      font-family: 'Cormorant Upright', serif;
+      font-size: 48px; font-weight: 300;
+      color: var(--navy); line-height: 1;
+    }
+    .countdown-label {
+      font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; opacity: 0.4;
+      display: block; margin-top: 4px;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      nav { gap: 20px; padding: 14px 16px; }
+      nav a { font-size: 11px; letter-spacing: 0.12em; }
+      .celebration-details { gap: 30px; }
+      .hero-meta { gap: 30px; }
+      .story-photos { grid-template-columns: 1fr 1fr; gap: 8px; max-width: 100%; }
+      .swatch-circle { width: 58px; height: 58px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#story">Наша Історія</a>
+  <a href="#ceremony">Церемонія</a>
+  <span class="nav-title">Л & І</span>
+  <a href="#palette">Дрес-код</a>
+  <a href="#more">RSVP</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-script">
+    Лілія <span class="hero-amp">&amp;</span> Ілля
+  </div>
+  <p class="hero-subtitle">… одружуються</p>
+  <p class="hero-date">восьмого серпня, 2026 року</p>
+  <div class="hero-divider"></div>
+  <div class="hero-photo" style="width:min(540px, 90vw); aspect-ratio:2/3;">
+    <img src="photo_hero.jpeg" alt="Лілія & Ілля" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="label">Дата</span>
+      <span class="value">8 серпня 2026</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="label">Місце</span>
+      <span class="value">Willa Biała, Варшава</span>
+    </div>
+  </div>
+  <div class="countdown" id="countdown">
+    <div class="countdown-unit"><div class="countdown-num" id="cd-days">—</div><span class="countdown-label">Днів</span></div>
+    <div class="countdown-unit"><div class="countdown-num" id="cd-hours">—</div><span class="countdown-label">Годин</span></div>
+    <div class="countdown-unit"><div class="countdown-num" id="cd-mins">—</div><span class="countdown-label">Хвилин</span></div>
+    <div class="countdown-unit"><div class="countdown-num" id="cd-secs">—</div><span class="countdown-label">Секунд</span></div>
+  </div>
+  <a href="#more" class="rsvp-cta">Повідомте нас про свою присутність</a>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="section-inner">
+    <h2 class="section-title">Наша Історія</h2>
+    <p class="story-text">
+      Лілія та Ілля познайомилися у застосунку для знайомств — один свайп вирішив усе.
+      Для Лілії це був перший і єдиний свайп, і якимось дивом він виявився правильним.
+      <br /><br />
+      Втім, перше побачення мало не зірвалося — Ілля скасував його за дві години до зустрічі,
+      і наша історія мало не скінчилася, ще не встигнувши розпочатися. Та доля мала інші плани.
+      Після «другого першого побачення» ми більше не розлучалися.
+      <br /><br />
+      Майже три роки потому — сповнені сміху, любові та ніжності —
+      ми готові розпочати наступний розділ нашого життя. Приходьте святкувати разом з нами!
+    </p>
+    <div class="story-photos">
+      <div class="story-photo-wrap">
+        <img src="photo_story.jpeg" alt="Лілія & Ілля" />
+      </div>
+      <div class="story-photo-wrap">
+        <img src="photo_story2.jpeg" alt="Лілія & Ілля" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIVIL CEREMONY -->
+<section id="ceremony">
+  <div class="section-inner">
+    <h2 class="section-title">Цивільна Церемонія</h2>
+    <div class="ceremony-grid">
+      <div style="overflow:hidden;">
+        <img src="photo_ceremony_left.jpeg" alt="Лілія & Ілля" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" />
+      </div>
+      <div style="overflow:hidden;">
+        <img src="photo_ceremony_right.jpeg" alt="Лілія & Ілля" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" />
+      </div>
+    </div>
+    <p class="ceremony-text">
+      Цивільна церемонія відбудеться о 13:00<br />
+      в Управлінні реєстрації актів цивільного стану м. Варшави.<br /><br />
+      <em>Запізнитесь — і пропустите найважливіше.</em><br /><br />
+      Ми будемо раді бачити вас поруч у цю особливу мить.
+    </p>
+    <div class="ceremony-details">
+      <div class="info-block">
+        <span class="label">Дата</span>
+        <span class="value">8 серпня 2026</span>
+      </div>
+      <div class="info-block">
+        <span class="label">Час</span>
+        <span class="value">13:00</span>
+      </div>
+      <div class="info-block">
+        <span class="label">Місце</span>
+        <span class="value">Urząd Stanu Cywilnego m.st. Warszawy</span>
+      </div>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:rgba(255,255,255,0.6);margin: 20px 0 24px; text-align:center;">
+      Młynarska 16, Варшава
+    </p>
+    <div style="text-align:center;">
+      <a style="display:inline-block;padding:12px 36px;border:1px solid rgba(255,255,255,0.5);color:rgba(255,255,255,0.8);font-family:'EB Garamond',serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:background 0.25s,color 0.25s;" href="https://maps.google.com/?q=Urząd+Stanu+Cywilnego+Młynarska+16+Warszawa" target="_blank" rel="noopener">
+        Відкрити в Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CELEBRATION -->
+<section id="celebration">
+  <div class="celebration-inner">
+    <h2 class="section-title section-title-cream">Святкування</h2>
+    <p class="celebration-text">
+      Запрошуємо вас провести з нами вечір, наповнений смачною їжею,<br />
+      щирим сміхом та танцями на честь початку нашого спільного шляху.
+    </p>
+    <div class="celebration-details">
+      <div class="info-block">
+        <span class="label">Дата</span>
+        <span class="value">8 серпня 2026</span>
+      </div>
+      <div class="info-block">
+        <span class="label">Час</span>
+        <span class="value">з 16:00</span>
+      </div>
+      <div class="info-block">
+        <span class="label">Місце</span>
+        <span class="value">Willa Biała</span>
+      </div>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--navy);opacity:0.6;margin-bottom:24px;">
+      Ludwika Narbutta 10, 02-564 Варшава
+    </p>
+    <a class="map-link" href="https://maps.google.com/?q=Willa+Biała+Ludwika+Narbutta+10+Warszawa" target="_blank" rel="noopener">
+      Відкрити в Google Maps
+    </a>
+  </div>
+</section>
+
+<!-- COLOR PALETTE -->
+<section id="palette">
+  <div class="section-inner">
+    <h2 class="section-title section-title-cream">Палітра Кольорів</h2>
+    <p class="palette-intro">Наша весільна палітра — координуйте свій образ на власний смак!</p>
+    <div class="palette-grid">
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#000000;"></div>
+        <span class="swatch-name">Чорний</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#3B1A0E;"></div>
+        <span class="swatch-name">Шоколад</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#3D0B14;"></div>
+        <span class="swatch-name">Глибокий бордо</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#3A1030;"></div>
+        <span class="swatch-name">Темна слива</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#5C2018;"></div>
+        <span class="swatch-name">Кавовий</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#9B4422;"></div>
+        <span class="swatch-name">Кориця</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#8C6030;"></div>
+        <span class="swatch-name">Бронза</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#C8A876;"></div>
+        <span class="swatch-name">Верблюжий</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#1D3B58; border: 2px solid rgba(29,59,88,0.25);"></div>
+        <span class="swatch-name">Сапфір</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#3A3535;"></div>
+        <span class="swatch-name">Графіт</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#4A5630;"></div>
+        <span class="swatch-name">Мох</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#897E76;"></div>
+        <span class="swatch-name">Теплий таупе</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#8E9BAA;"></div>
+        <span class="swatch-name">Холодний сірий</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#C8CCDF;"></div>
+        <span class="swatch-name">Крижана лаванда</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#F0C8C8;"></div>
+        <span class="swatch-name">Ніжно-рожевий</span>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-circle" style="background:#F5F0E8; border: 1px solid rgba(29,59,88,0.15);"></div>
+        <span class="swatch-name">Крижаний білий</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">Питання & Відповіді</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Який дрес-код?</div>
+        <div class="faq-a">Святковий, урочистий одяг — вітається.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Що буде в меню?</div>
+        <div class="faq-a">На вас чекає сучасна східноєвропейська кухня. Меню включатиме холодні та гарячі закуски, а також десерти. У ресторані ви також зможете обрати перше та основне блюдо. Буде доступний відкритий бар.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">О котрій годині варто прийти?</div>
+        <div class="faq-a">
+          О 13:00 — якщо ви бажаєте приєднатися до цивільної церемонії,
+          або о 16:00 — якщо плануєте одразу на святкування.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Подарунки?</div>
+        <div class="faq-a">
+          Ми мріємо про медовий місяць в Японії, тож грошовий подарунок буде найбільш доречним.
+          Квіти завжди прекрасні, але якщо вам хочеться чогось особливого — пляшка хорошого вина
+          порадує нас не менше: ми зможемо відкрити її разом із вами за вечерею.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">А якщо я не зможу прийти?</div>
+        <div class="faq-a">Це не варіант!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORE -->
+<section id="more">
+  <div class="section-inner">
+    <div class="more-caption" style="margin-bottom:36px;">
+      <h2 class="section-title">Будь ласка, повідомте нас,<br>чи зможете бути присутні.</h2>
+      <p>Ми будемо раді святкувати цей день разом з вами.</p>
+    </div>
+    <div class="more-grid">
+      <div style="overflow:hidden;">
+        <img src="photo_more_left.jpeg" alt="Лілія & Ілля" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" />
+      </div>
+      <div style="overflow:hidden;">
+        <img src="photo_more_right.jpeg" alt="Лілія & Ілля" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Лілія &amp; Ілля</span>
+  8 серпня 2026 · Варшава, Польща
+</footer>
+
+<script>
+  function updateCountdown() {
+    const wedding = new Date('2026-08-08T16:00:00+02:00');
+    const now = new Date();
+    const diff = wedding - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML = '<p style="font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:22px;">Сьогодні той самий день! 🎉</p>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
